@@ -2,7 +2,7 @@
 :root {
   --body-bg-color: hsl(275, 100%, 97%);
   --card-bg-color: hsl(0, 100%, 100%);
-  --card-shadow-color: hsla(292, 42%, 14%, 0.08);
+  --card-shadow-color: hsla(292, 16%, 49%, 0.1);
   --light-txt-color: hsl(292, 16%, 49%);
   --dark-txt-color: hsl(292, 42%, 14%);
   --icon-color: hsl(281, 83%, 54%);
