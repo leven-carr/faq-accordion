@@ -1,109 +1,57 @@
-# Frontend Mentor - FAQ accordion
+# Frontend Mentor - FAQ accordion solution
 
-![Design preview for the FAQ accordion coding challenge](preview.jpg)
+This is a solution to the [FAQ accordion challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/faq-accordion-wyfFdeBwBz). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this FAQ accordion and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - Hide/Show the answer to a question when the question is clicked
 - Navigate the questions and hide/show answers using keyboard navigation alone
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-### Want some support on the challenge? 
+### Links
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## Where to find everything
+## My process
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+Setup steps: Create an assets folder, and place the images folder within it. Also create folders for css and js inside assets, then create a styles.css file and a script.js file inside their respective folders. Link the favicon, fontawesome library, Google font, and styles.css in the head. Include the script tag in the head as well, with a defer attribute. Write the custom variables and the universal reset in styles.css.
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+Working on the HTML: Create a main element to hold the content, and a class of flex-container to be used to center it on the page. Create a section container to hold the FAQs card, and give it two direct children. The first is div that is a flex row, holding the sparkle icon and the h1. The second is a ul, holding 4 li element, one for each FAQ. Each li contains a flex row div which holds the question and the plus/minus icon. The second child of each li (sibling to the div) is a p element, the answer to the question.
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+Styling: After the reset and some default styles, I placed the background-image on the body::before pseudo-element to have some more flexibility with its position and shrinking/expanding for different screen sizes. Next I have some basic flexbox rules before moving on to the card and its descendant elements. Then I did the hover and focus state styles for the questions, and the styles for the expanded state. Lastly I have the media query which changed the background-image to its mobile version, and tweaked the sizes of some elements.
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+JavaScript: Define the event handler function, expandHandler. This function works by accessing the icon element (the plus/minus sign) and toggling which fontawesome class is applied to it. It also toggles the expand class on the answer. To breakdown how the respective elements are accessed: For the icon, start with e.currentTarget (which will always be an <li>, since that's the element the listener is on), then traverse to its first child element (the flexrow div), then traverse to that element's second child, which is at index 1 (the icon). For the answer, once again start with e.currentTarget, and traverse directly to its second child, the p.answer element. After the function definition are the event listeners. We use querySelectorAll to access all of the faq list items, then use .forEach to place two event listeners on each list item. The first event listener is for the click event, at which point it calls expandHandler. The second event listener is for the keydown event, which first checks to see if the Enter key was pressed, and if so, it invokes expandHandler. This second event listener is responsible for keyboard navigation.
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+### Built with
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+HTML, CSS, and vanilla JS
 
-## Using AI coding assistants
+### What I learned
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+This was a good practical exercise for me in writing JS. I know there are HTML elements (<details> and <summary>) that can be used to make an accordion menu with no JS, but this was good practice. I had not previously defined an event handler before (meaning I had always just used anonymous arrow functions) so this was a little bit of a learning experience for that syntax, especially in regards to passing in the e parameter vs the faq parameter from the forEach method.
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+### Continued development
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+In the future I just want to continue getting more comfortable writing practical JS, especially in regards to making it concise and following best practices.
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+## Author
 
-## Building your project
-
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
-
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
-
-## Deploying your project
-
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
-
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of our [community](https://www.frontendmentor.io/community).
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [@leven-carr](https://www.frontendmentor.io/profile/leven-carr)
+- GitHub - [@leven-carr](https://github.com/leven-carr)
